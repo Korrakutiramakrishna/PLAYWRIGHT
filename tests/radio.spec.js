@@ -31,26 +31,8 @@ test('radiobtn',async ({page})=>
 });
 
 
-test.only('windows handling ' ,async({browser})=>
-{   
-    const context =await browser.newContext()
-    const page =await context.newPage()
-    await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
-    const doucemntlink =page.locator("//a[contains(text(),'Free Access to InterviewQues/ResumeAssistance/Material')]")
-    const [newpage] =await Promise.all([
-        context.waitForEvent('page'),
-         doucemntlink.click()
-    ])  
-    await newpage.waitForLoadState();
-   const text =await newpage.locator(".red").textContent();
-    console.log(text);
-    const arrayText =text.split("@");
-    const domainname =arrayText[1].split(" ")[0]
-     console.log(domainname)
+// test.only('windows handling ' ,async({page})=>
+// {   
+//     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
 
-
-     await page.bringToFront();
-
-    await page.locator("#username").fill(domainname)
-    console.log(await page.locator("#username").inputValue())
-});
+// });

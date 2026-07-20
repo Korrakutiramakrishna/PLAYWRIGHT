@@ -55,7 +55,7 @@ test.only('windows handling ' ,async({browser})=>
 
 
 
-test.only('windows handling ' ,async({browser})=>
+test('windows handling propiwes ' ,async({browser})=>
 {   
     const context =await browser.newContext()
     const page =await context.newPage()

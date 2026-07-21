@@ -29,6 +29,7 @@ test('radiobtn',async ({page})=>
   await signbtn.click();
 
 });
+
 test.only('windows handling ' ,async({browser})=>
 {   
     const context =await browser.newContext()
@@ -78,3 +79,4 @@ test('windows handling propiwes ' ,async({browser})=>
     await page.locator("#username").fill(domainname)
     console.log(await page.locator("#username").inputValue())
 });
+

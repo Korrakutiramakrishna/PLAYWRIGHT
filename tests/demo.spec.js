@@ -1,5 +1,4 @@
 const {expect,test} =require('@playwright/test');
-const { text } = require('node:stream/consumers');
 
 test('demo Shop ',async({page})=>
 {

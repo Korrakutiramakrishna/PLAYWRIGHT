@@ -1,8 +1,5 @@
 const{test ,expect}=require('@playwright/test');
 
-
-
-
 test('letshop shopperstack' , async({page})=>
 {
     const productname="ZARA COAT 3";
@@ -19,17 +16,21 @@ test('letshop shopperstack' , async({page})=>
    console.log(count);
    const productnames=await page.locator(".card-body b").allTextContents();
    console.log(productnames)
-  for(let i=0;i<=productnames.length;i++)
-  {
-    if(productnames===productname)
+   for(let i=0;i<productnames.length;i++)
+   {
+    console.log(productnames[i])
+    if(productnames[i]===productname)
     {
-        console.log("Product Found");
-        await page.locator("//button[text()=' Add To Cart']").nth(1).click();
-        break;
+      await page.locator("//button[@class='btn w-10 rounded']").nth(1).click();
+      break;
     }
-    await page.locator("//button[@class='btn btn-custom']").nth(2).click()
-    const value = await page.locator("//span[@class='value']").first().textContent();
-    await page.locator("//button[text()='Checkout']").click()
-  
-  }
+   }
+   await page.locator("[routerlink*=cart]").click();
+   await page.waitForLoadState('networkidle')
+   await expect(page.locator("//h3[text()='ZARA COAT 3']")).toBeVisible();
+   const Subtotal =await page.locator("//span[@class='value']").nth(0).textContent();
+   console.log(Subtotal);
+    const total =await page.locator("//span[@class='value']").nth(1).textContent();
+    console.log(total)
+    await page.locator("//button[text()='Checkout']").click();
 });

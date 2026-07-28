@@ -72,7 +72,7 @@ test('windows handling propiwes ' ,async({browser})=>
     const arrayText =text.split("@");
     const domainname =arrayText[1].split(" ")[0]
      console.log(domainname)
-
+         
 
      await page.bringToFront();
 
